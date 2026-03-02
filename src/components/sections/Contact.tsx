@@ -4,9 +4,56 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
+import emailjs from "@emailjs/browser";
+import { FormEvent, useState } from "react";
 
 export function Contact() {
     const { t } = useLanguage();
+
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+    });
+
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => {
+        setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    };
+
+    const handleSubmit = async (e: FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setStatus("idle");
+
+        try {
+            await emailjs.send(
+                "service_9wkoz7h",
+                "template_ascuk0f",
+                {
+                    from_name: formData.name,
+                    from_email: formData.email,
+                    phone: formData.phone,
+                    message: formData.message,
+                },
+                "OgL_WsHBMEPTEY9UZ",
+            );
+
+            setStatus("success");
+            setFormData({ name: "", email: "", phone: "", message: "" });
+        } catch (error) {
+            console.error("Erro ao enviar email:", error);
+            setStatus("error");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <section
             id="contact"
@@ -128,7 +175,7 @@ export function Contact() {
                     >
                         <form
                             className="flex flex-col gap-6"
-                            onSubmit={(e) => e.preventDefault()}
+                            onSubmit={handleSubmit}
                         >
                             <div className="flex flex-col gap-2">
                                 <label
@@ -140,6 +187,9 @@ export function Contact() {
                                 <input
                                     type="text"
                                     id="name"
+                                    required
+                                    value={formData.name}
+                                    onChange={handleChange}
                                     className="w-full bg-[#050505] border border-border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
                                 />
                             </div>
@@ -149,11 +199,14 @@ export function Contact() {
                                     htmlFor="email"
                                     className="text-sm font-semibold text-text-main"
                                 >
-                                    {t.contact.emailInput}
+                                    {t.contact.email}
                                 </label>
                                 <input
                                     type="email"
                                     id="email"
+                                    required
+                                    value={formData.email}
+                                    onChange={handleChange}
                                     className="w-full bg-[#050505] border border-border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
                                 />
                             </div>
@@ -168,6 +221,8 @@ export function Contact() {
                                 <input
                                     type="tel"
                                     id="phone"
+                                    value={formData.phone}
+                                    onChange={handleChange}
                                     className="w-full bg-[#050505] border border-border rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
                                 />
                             </div>
@@ -181,16 +236,22 @@ export function Contact() {
                                 </label>
                                 <textarea
                                     id="message"
+                                    required
                                     rows={4}
+                                    value={formData.message}
+                                    onChange={handleChange}
                                     className="w-full bg-[#050505] border border-border rounded-lg px-4 py-3 text-text-main resize-none focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
                                 ></textarea>
                             </div>
 
                             <button
                                 type="submit"
-                                className="w-full bg-white text-black font-bold text-base rounded-lg py-4 mt-2 hover:bg-gray-200 transition-colors active:scale-[0.98]"
+                                disabled={isSubmitting}
+                                className="w-full bg-white text-black font-bold text-base rounded-lg py-4 mt-2 hover:bg-gray-200 transition-colors active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                {t.contact.sendButton}
+                                {isSubmitting
+                                    ? "Enviando..."
+                                    : t.contact.sendButton}
                             </button>
                         </form>
                     </motion.div>
