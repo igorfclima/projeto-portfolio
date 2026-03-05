@@ -14,9 +14,9 @@ export const projects = [
     },
     {
         id: 2,
-        title: "Xulambs City",
-        image: "/expensetracker.jpg",
-        techs: ["Java", "Tests"],
+        title: "Barbear",
+        image: "/barbear.jpg",
+        techs: ["Spring Boot", "Tests", "Docker", "React", "TypeScript"],
         link: "#",
     },
 ];

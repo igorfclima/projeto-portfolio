@@ -57,14 +57,6 @@ export function Projects() {
                                         </span>
                                     ))}
                                 </div>
-
-                                <Link
-                                    href={project.link}
-                                    className="p-3 bg-accent rounded-xl text-white hover:bg-accent/80 transition-colors shrink-0  duration-300"
-                                >
-                                    {/*n peguei o link do repo*/}
-                                    <ArrowUpRight className="w-5 h-5" />
-                                </Link>
                             </div>
                         </motion.div>
                     ))}
