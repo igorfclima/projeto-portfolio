@@ -20,20 +20,6 @@ export function Projects() {
                     >
                         {t.projects.title}
                     </motion.h2>
-
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <Link
-                            href="#all-projects"
-                            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border text-sm text-muted hover:text-text-main hover:border-text-main/50 transition-colors"
-                        >
-                            {t.projects.button}
-                            <ChevronRight className="w-4 h-4" />
-                        </Link>
-                    </motion.div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

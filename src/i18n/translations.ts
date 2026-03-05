@@ -40,10 +40,10 @@ export const translations = {
             title: "My experience",
             job1Role: "IT Business Partner",
             job1Desc:
-                "Código código código código código código código código código código código código código",
-            job2Role: "Estagiário de Engenharia de Software",
+                "Leading IT project planning and ensuring strategic alignment between technology and business goals. Focused on managing and optimizing SAP ERP solutions to drive operational efficiency.",
+            job2Role: "Software Engineering Intern",
             job2Desc:
-                "Código código código código código código código código código código código código código",
+                "Worked on various projects performing bug fixes and full-stack development. Contributed to the company's internal UI library using React, TypeScript, Tailwind CSS, and .NET.",
         },
         projects: {
             title: "My projects",
@@ -104,10 +104,10 @@ export const translations = {
             title: "Minha experiência",
             job1Role: "IT Business Partner",
             job1Desc:
-                "Código código código código código código código código código código código código código",
+                "Liderando o planejamento de projetos de TI e garantindo o alinhamento estratégico entre tecnologia e negócios. Foco no gerenciamento e otimização de soluções ERP SAP para impulsionar a eficiência operacional.",
             job2Role: "Estagiário de Engenharia de Software",
             job2Desc:
-                "Código código código código código código código código código código código código código",
+                "Atuei em diversos projetos realizando correções de bugs e desenvolvimento full-stack. Contribuí para a biblioteca de componentes interna da empresa utilizando React, TypeScript, Tailwind CSS e .NET.",
         },
         projects: {
             title: "Meus projetos",
