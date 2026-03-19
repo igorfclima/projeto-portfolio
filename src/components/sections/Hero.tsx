@@ -58,13 +58,6 @@ export function Hero() {
                         {t.hero.btnProjects}
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
-                    <Link
-                        href="#contact"
-                        className="flex items-center gap-2 px-8 py-3 bg-transparent text-white font-semibold rounded-md  transition-all duration-300 w-full sm:w-auto justify-center border border-transparent hover:border-accent hover:text-accent"
-                    >
-                        <Download className="w-6 h-6 text-accent" />
-                        <p>{t.hero.btnContact}</p>
-                    </Link>
                     <div
                         onClick={toggleLanguage}
                         className="flex items-center gap-2 px-8 py-3 bg-transparent text-white font-semibold rounded-md  transition-all duration-300 w-full sm:w-auto justify-center border border-transparent hover:border-accent hover:text-accent cursor-pointer"
