@@ -3,6 +3,7 @@ import { Raleway } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/shared/Navbar";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { Analytics } from "@vercel/analytics/next";
 
 const raleway = Raleway({
     variable: "--font-raleway",
@@ -26,6 +27,7 @@ export default function RootLayout({
                     <Navbar />
                     {children}
                 </LanguageProvider>
+                <Analytics />
             </body>
         </html>
     );
